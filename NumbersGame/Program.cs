@@ -31,7 +31,7 @@ namespace NumbersGame
                         } while (YesOrNo != ConsoleKey.Y && YesOrNo != ConsoleKey.N); // takes input from user to check Yes or no
 
                         NormalOrCustom = true ? YesOrNo == ConsoleKey.Y : YesOrNo == ConsoleKey.N; // do they want custom difficulty?
-                        Console.WriteLine();
+                        Console.Clear();
 
                         if (NormalOrCustom == true) // yes they do, let's make it a custom game
                         {
@@ -43,17 +43,18 @@ namespace NumbersGame
                                 Console.WriteLine("1: 10 gissningar, 15 olika tal");
                                 Console.WriteLine("2: 8 gissningar, 30 olika tal");
                                 Console.WriteLine("3: 7 gissningar, 45 olika tal");
-                                Console.WriteLine("1: 6 gissningar, 60 olika tal");
-                                Console.WriteLine("1: 5 gissningar, 75 olika tal");
+                                Console.WriteLine("4: 6 gissningar, 60 olika tal");
+                                Console.WriteLine("5: 5 gissningar, 75 olika tal");
+                                Console.WriteLine("5: Välj X antal gissningar, Välj mellan tal");
                                 QueryString = Console.ReadLine();
                             }
                             Difficulty = Convert.ToInt32(QueryString);
-                            engine.CustomGuessing(guesses,QueryString,Difficulty);
+                            engine.CustomGuessing(QueryString,rand,Difficulty, NormalOrCustom);
                         }
                         else // normal guessing game with set difficulty, and no they dont
                         {
                             Console.WriteLine("Du kommer få 5 gissningar, med ett nummer mellan 1 och 20");
-                            engine.StandardGuessing(guesses, StandardRandNumber,QueryString);
+                            engine.Guessing(guesses, StandardRandNumber,QueryString, NormalOrCustom);
                         }
 
                         GameState = engine.RestartGame(YesOrNo); // calls function to check if player wants to play again

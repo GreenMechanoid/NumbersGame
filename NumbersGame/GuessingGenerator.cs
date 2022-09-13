@@ -7,12 +7,12 @@ namespace NumbersGame
 
     class Guesser
     {
-        public void StandardGuessing(int numberOfGuesses, int randNumber, string Query)
+        public void Guessing(int numberOfGuesses, int randNumber, string Query,bool NormalOrCustom)
         {
-            Console.WriteLine("We got to Standard Guessing!");
             int GuessCounter = 0;
             int GuessedNumber;
             bool CorrectGuess = false;
+            Console.WriteLine("Dags för din första gissning");
             do
             {
                 do
@@ -22,33 +22,61 @@ namespace NumbersGame
 
                 if (GuessedNumber == randNumber)
                 {
-                    Console.WriteLine("Grattis du gissade rätt!");
+                    Console.WriteLine("Woho! Du gjorde det!");
                     CorrectGuess = true;
                 }
                 else if (GuessedNumber < randNumber){
-                    Console.WriteLine("Ditt gissade nummer är lägre än nummret");
-                }
-                else if (GuessedNumber > randNumber)
-                {
-                    Console.WriteLine("Ditt gissade nummer är högre än nummret");
+                    Console.WriteLine("Tyvärr du gissade för lågt! Försök kvar:" + ((numberOfGuesses -1) - GuessCounter));
                 }
                 else
                 {
-                    Console.WriteLine("Tyvär du gissade fel!, försök igen");
+                    Console.WriteLine("Tyvärr du gissade för högt! Försök kvar:" + ((numberOfGuesses - 1) - GuessCounter));
                 }
 
                 GuessCounter++;
-            } while ((GuessCounter != numberOfGuesses) && CorrectGuess == false);
-            if (GuessCounter == numberOfGuesses)
+
+                if (GuessCounter == numberOfGuesses && NormalOrCustom == false)
             {
                 Console.Clear();
-                Console.WriteLine("Tyvär så var det sista gissningen!, Det rätta nummret var "+ randNumber);
+                Console.WriteLine("Tyvärr du lyckades inte gissa talet på fem försök! Nummret var:" + randNumber);
             }
+            else if (GuessCounter == numberOfGuesses && NormalOrCustom == true && CorrectGuess == false)
+            {
+                Console.Clear();
+                Console.WriteLine("Tyvärr du lyckades inte gissa talet på " + numberOfGuesses + " försök! Nummret var:" + randNumber);
+            }
+            } while ((GuessCounter != numberOfGuesses) && CorrectGuess == false );
+            
         }
 
-        public void CustomGuessing(int numberOfGuesses, string Query, int difficulty)
+        public void CustomGuessing(string query,Random rand, int difficulty, bool NormalOrCustom)
         {
-            Console.WriteLine("We got to Custom Guessing!");
+            int RandomNumber;
+            switch (difficulty)
+            {
+                case 1:
+                    RandomNumber = rand.Next(1,15);
+                    Guessing(10, RandomNumber, query, NormalOrCustom);
+                    break;
+                case 2:
+                    RandomNumber = rand.Next(1,30);
+                    Guessing(8, RandomNumber, query, NormalOrCustom);
+                    break;
+                case 3:
+                    RandomNumber = rand.Next(1,45);
+                    Guessing(7, RandomNumber, query, NormalOrCustom);
+                    break;
+                case 4:
+                    RandomNumber = rand.Next(1,60);
+                    Guessing(6, RandomNumber, query, NormalOrCustom);
+                    break;
+                case 5:
+                    RandomNumber = rand.Next(1,75);
+                    Guessing(5, RandomNumber, query, NormalOrCustom);
+                    break;
+
+            }
+
 
         }
 
