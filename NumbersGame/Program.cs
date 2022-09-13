@@ -12,7 +12,7 @@ namespace NumbersGame
             Random rand = new Random();
             Guesser engine = new Guesser();
             int guesses = 5;
-            int Difficulty = 1;
+            int Difficulty = 0;
             string QueryString = ""; // get's string input from user for the guesses
 
 
@@ -40,10 +40,15 @@ namespace NumbersGame
                             while (int.TryParse(QueryString, out Difficulty) is false)
                             {
                                 Console.WriteLine("Vänligen välj en svårighetsgrad mellan 1 och 5");
+                                Console.WriteLine("1: 10 gissningar, 15 olika tal");
+                                Console.WriteLine("2: 8 gissningar, 30 olika tal");
+                                Console.WriteLine("3: 7 gissningar, 45 olika tal");
+                                Console.WriteLine("1: 6 gissningar, 60 olika tal");
+                                Console.WriteLine("1: 5 gissningar, 75 olika tal");
                                 QueryString = Console.ReadLine();
                             }
                             Difficulty = Convert.ToInt32(QueryString);
-                            engine.CustomGuessing(guesses);
+                            engine.CustomGuessing(guesses,QueryString,Difficulty);
                         }
                         else // normal guessing game with set difficulty, and no they dont
                         {

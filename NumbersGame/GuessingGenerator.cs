@@ -25,6 +25,13 @@ namespace NumbersGame
                     Console.WriteLine("Grattis du gissade rätt!");
                     CorrectGuess = true;
                 }
+                else if (GuessedNumber < randNumber){
+                    Console.WriteLine("Ditt gissade nummer är lägre än nummret");
+                }
+                else if (GuessedNumber > randNumber)
+                {
+                    Console.WriteLine("Ditt gissade nummer är högre än nummret");
+                }
                 else
                 {
                     Console.WriteLine("Tyvär du gissade fel!, försök igen");
@@ -39,9 +46,10 @@ namespace NumbersGame
             }
         }
 
-        public void CustomGuessing(int numberOfGuesses)
+        public void CustomGuessing(int numberOfGuesses, string Query, int difficulty)
         {
             Console.WriteLine("We got to Custom Guessing!");
+
         }
 
         public bool RestartGame(ConsoleKey inputVariable)
