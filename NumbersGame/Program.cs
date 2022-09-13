@@ -19,7 +19,7 @@ namespace NumbersGame
                 switch (GameState)
                 {
                     default: // normal operation
-                        int StandardRandNumber = rand.Next(1, 20);
+                        int StandardRandNumber = rand.Next(1, 21);
                         Console.WriteLine("Välkommen! Jag tänker på ett nummer.Kan du gissa vilket ?");
 
                         do

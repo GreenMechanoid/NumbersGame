@@ -68,24 +68,25 @@ namespace NumbersGame
 
             switch (difficulty) // takes the "custom" parts of the game and inserts into the normal logic
             {
+                // cases generates numbers that can actually land at say 15 for difficulty 1 according to the previous print to console
                 case 1:
-                    RandomNumber = rand.Next(1,15);
+                    RandomNumber = rand.Next(1,16); // <- is easier than "normal" mode
                     Guessing(10, RandomNumber, query, NormalOrCustom);
                     break;
                 case 2:
-                    RandomNumber = rand.Next(1,30);
+                    RandomNumber = rand.Next(1,31);
                     Guessing(8, RandomNumber, query, NormalOrCustom);
                     break;
                 case 3:
-                    RandomNumber = rand.Next(1,45);
+                    RandomNumber = rand.Next(1,46);
                     Guessing(7, RandomNumber, query, NormalOrCustom);
                     break;
                 case 4:
-                    RandomNumber = rand.Next(1,60);
+                    RandomNumber = rand.Next(1,61);
                     Guessing(6, RandomNumber, query, NormalOrCustom);
                     break;
                 case 5:
-                    RandomNumber = rand.Next(1,75);
+                    RandomNumber = rand.Next(1,76);
                     Guessing(5, RandomNumber, query, NormalOrCustom);
                     break;
 
