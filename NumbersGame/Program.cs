@@ -15,8 +15,6 @@ namespace NumbersGame
             int Difficulty = 0;
             string QueryString = ""; // get's string input from user for the guesses
 
-
-
             do
                 switch (GameState)
                 {
@@ -37,7 +35,7 @@ namespace NumbersGame
                         {
                             Console.WriteLine("Vänligen välj en svårighetsgrad mellan 1 och 5");
                             QueryString = Console.ReadLine();
-                            while (int.TryParse(QueryString, out Difficulty) is false)
+                            while (int.TryParse(QueryString, out Difficulty) is false) // checks that a number is entered
                             {
                                 Console.WriteLine("Vänligen välj en svårighetsgrad mellan 1 och 5");
                                 Console.WriteLine("1: 10 gissningar, 15 olika tal");
@@ -48,10 +46,10 @@ namespace NumbersGame
                                 QueryString = Console.ReadLine();
                             }
                             Difficulty = Convert.ToInt32(QueryString);
-                            engine.CustomGuessing(QueryString,rand,Difficulty, NormalOrCustom);
+                            engine.CustomGuessing(QueryString,rand,Difficulty, NormalOrCustom); // inputs the values into the custom game selector
 
                         }
-                        else // normal guessing game with set difficulty, and no they dont
+                        else // normal guessing game with set difficulty, and no they dont want a custom difficulty
                         {
                             Console.WriteLine("Du kommer få 5 gissningar, med ett nummer mellan 1 och 20");
                             engine.Guessing(guesses, StandardRandNumber,QueryString, NormalOrCustom);
@@ -64,12 +62,12 @@ namespace NumbersGame
                             break;
                         }
                         else { goto case false; }
-                    case false:
+                    case false: // Exit message to the player
                         Console.Clear();
                         Console.WriteLine("\nTackar för att du spelade, Ha en trevlig dag!\n");
                         break;
                 }
-            while (GameState == true);
+            while (GameState == true); // keeps going untill player says stop
 
         }
     }

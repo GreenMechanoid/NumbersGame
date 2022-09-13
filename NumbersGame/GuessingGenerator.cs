@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 //Daniel Svensson .Net22
+
+// made a class and methods to handle game running and logic
 namespace NumbersGame
 {
 
     class Guesser
     {
-        public void Guessing(int numberOfGuesses, int randNumber, string Query,bool NormalOrCustom)
+        public void Guessing(int numberOfGuesses, int randNumber, string Query,bool NormalOrCustom) // the games logic
         {
             int GuessCounter = 0;
             int GuessedNumber;
             bool CorrectGuess = false;
             Console.WriteLine("Dags för din första gissning");
-            do
+            do // keeps running until user either guesses wrong to meny times or get's the correct awnser
             {
                 do
                 {
                     Query = Console.ReadLine();
-                } while (int.TryParse(Query, out GuessedNumber)is false);
+                } while (int.TryParse(Query, out GuessedNumber)is false); // makes certain the input is actually a number
 
                 if (GuessedNumber == randNumber)
                 {
@@ -35,24 +37,24 @@ namespace NumbersGame
 
                 GuessCounter++;
 
-                if (GuessCounter == numberOfGuesses && NormalOrCustom == false)
-            {
-                Console.Clear();
-                Console.WriteLine("Tyvärr du lyckades inte gissa talet på fem försök! Nummret var:" + randNumber);
-            }
-            else if (GuessCounter == numberOfGuesses && NormalOrCustom == true && CorrectGuess == false)
-            {
-                Console.Clear();
-                Console.WriteLine("Tyvärr du lyckades inte gissa talet på " + numberOfGuesses + " försök! Nummret var:" + randNumber);
-            }
+                if (GuessCounter == numberOfGuesses && NormalOrCustom == false) // below handles the custom game and noraml game Lost logic
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Tyvärr du lyckades inte gissa talet på fem försök! Nummret var:" + randNumber);
+                    }
+                else if (GuessCounter == numberOfGuesses && NormalOrCustom == true && CorrectGuess == false)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Tyvärr du lyckades inte gissa talet på " + numberOfGuesses + " försök! Nummret var:" + randNumber);
+                }
             } while ((GuessCounter != numberOfGuesses) && CorrectGuess == false );
             
         }
 
-        public void CustomGuessing(string query,Random rand, int difficulty, bool NormalOrCustom)
+        public void CustomGuessing(string query,Random rand, int difficulty, bool NormalOrCustom) // takes the custom difficulty settings and inputs them to the games logic
         {
-            int RandomNumber;
-            while (difficulty >= 6 || difficulty == 0)
+            int RandomNumber; // rand number holder
+            while (difficulty >= 6 || difficulty <= 0) // makes certain the "difficulty" selector is within given cases
             {
                 Console.Clear();
                 Console.WriteLine("Vänligen välj en svårighetsgrad mellan 1 och 5");
@@ -64,7 +66,7 @@ namespace NumbersGame
             }
 
 
-            switch (difficulty)
+            switch (difficulty) // takes the "custom" parts of the game and inserts into the normal logic
             {
                 case 1:
                     RandomNumber = rand.Next(1,15);
@@ -92,7 +94,8 @@ namespace NumbersGame
 
         }
 
-        public bool RestartGame(ConsoleKey inputVariable)
+        public bool RestartGame(ConsoleKey inputVariable) // simple question statement that returns true or false,
+            //true they want to play again, false they dont want to play again
         {
             bool Restart = false;
             Console.WriteLine("Vill du spela igen? Y/N");
