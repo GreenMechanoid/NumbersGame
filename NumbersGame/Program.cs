@@ -45,11 +45,11 @@ namespace NumbersGame
                                 Console.WriteLine("3: 7 gissningar, 45 olika tal");
                                 Console.WriteLine("4: 6 gissningar, 60 olika tal");
                                 Console.WriteLine("5: 5 gissningar, 75 olika tal");
-                                Console.WriteLine("5: Välj X antal gissningar, Välj mellan tal");
                                 QueryString = Console.ReadLine();
                             }
                             Difficulty = Convert.ToInt32(QueryString);
                             engine.CustomGuessing(QueryString,rand,Difficulty, NormalOrCustom);
+
                         }
                         else // normal guessing game with set difficulty, and no they dont
                         {

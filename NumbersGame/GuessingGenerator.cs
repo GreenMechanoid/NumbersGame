@@ -52,6 +52,18 @@ namespace NumbersGame
         public void CustomGuessing(string query,Random rand, int difficulty, bool NormalOrCustom)
         {
             int RandomNumber;
+            while (difficulty >= 6 || difficulty == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("Vänligen välj en svårighetsgrad mellan 1 och 5");
+                query = Console.ReadLine();
+                if (int.TryParse(query, out difficulty) is false)
+                {
+                difficulty = Convert.ToInt32(query);
+                }
+            }
+
+
             switch (difficulty)
             {
                 case 1:
